@@ -18,6 +18,7 @@ class OrganicInternet_SimpleConfigurableProducts_Catalog_Block_Product_View_Medi
         }
         return $this->getUrl('*/*/gallery', $params);
     }
+    
 
 
 }

@@ -319,19 +319,24 @@ Product.Config.prototype.showFullImageDiv = function(productId, parentId) {
             onComplete: function() {
                 //Product.Zoom needs the *image* (not just the html source from the ajax)
                 //to have loaded before it works, hence image object and onload handler
-                if ($('image')){
+                
+                if ($('image')){                    
                     var imgObj = new Image();
-                    imgObj.onload = function() {product_zoom = new Product.Zoom('image', 'track', 'handle', 'zoom_in', 'zoom_out', 'track_hint'); };
+                    //imgObj.onload = function() {product_zoom = new Product.Zoom('image', 'track', 'handle', 'zoom_in', 'zoom_out', 'track_hint'); };
                     imgObj.src = $('image').src;
+                    
                 } else {
                     destElement.innerHTML = defaultZoomer;
-                    product_zoom = new Product.Zoom('image', 'track', 'handle', 'zoom_in', 'zoom_out', 'track_hint')
+                    //product_zoom = new Product.Zoom('image', 'track', 'handle', 'zoom_in', 'zoom_out', 'track_hint')
                 }
+                
+                jQuery('.cloud-zoom, .cloud-zoom-gallery').CloudZoom();
           }
         });
     } else {
         destElement.innerHTML = defaultZoomer;
-        product_zoom = new Product.Zoom('image', 'track', 'handle', 'zoom_in', 'zoom_out', 'track_hint');
+        //product_zoom = new Product.Zoom('image', 'track', 'handle', 'zoom_in', 'zoom_out', 'track_hint');
+        jQuery('.cloud-zoom, .cloud-zoom-gallery').CloudZoom();
     }
 };
 
