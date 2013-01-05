@@ -111,7 +111,6 @@
             <img src="<?php echo getImgUrl($this, $_product, $imgWidth, $imgHeight); ?>" alt="<?php echo $this->htmlEscape($this->getImageLabel());?>" title="<?php echo $this->htmlEscape($this->getImageLabel());?>" width="<?php echo $imgWidth;?>" />
         </a>
     </p>
-    IF
 <?php else: ?>
 
     <p class="product-image">
@@ -120,7 +119,6 @@
             echo $_helper->productAttribute($_product, $_img, 'image');
         ?>
     </p>
-    ELSE
 <?php endif; ?>
 
 <?php if (count($this->getGalleryImages()) > 0): ?>
