@@ -224,6 +224,7 @@ Product.Config.prototype.updateProductImage = function(productId) {
 };
 
 Product.Config.prototype.updateProductName = function(productId) {
+    /*
     var productName = this.config.productName;
     if (productId && this.config.childProducts[productId].productName) {
         productName = this.config.childProducts[productId].productName;
@@ -231,6 +232,16 @@ Product.Config.prototype.updateProductName = function(productId) {
     $$('#product_addtocart_form div.product-name h1').each(function(el) {
         el.innerHTML = productName;
     });
+    */
+    if (productId && this.config.childProducts[productId].productQty) {
+        var productQty = parseInt(this.config.childProducts[productId].productQty);
+        var message =
+        "<div class='product-type-data'><p class='availability-only'>" +
+        "<span title='Solo " + productQty + " en inventario'>Solo <strong>" + productQty + "</strong> en inventario</span>" +
+        "</p>" +
+        "<div class='mclear'></div></div>";
+        jQuery('.short-description .std').append(message);
+    }
 };
 
 Product.Config.prototype.updateProductShortDescription = function(productId) {

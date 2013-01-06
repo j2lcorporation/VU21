@@ -421,7 +421,7 @@ p.control input.radio { margin-right:6px; }
 .buttons-set button.button span span { padding-right:38px; padding-left:30px; }
 
 
-/* my:del Tymczasowo usuniete. Wymuszony styl zwyklych przycisków. Pozostawione tylko: padding
+/* my:del Tymczasowo usuniete. Wymuszony styl zwyklych przyciskï¿½w. Pozostawione tylko: padding
 .buttons-set button.button span {
 	background:url(../images/img/btn-navy+purple.png) no-repeat 0 -23px;
 	height:23px; 
@@ -2262,7 +2262,8 @@ tr.summary-details-excluded { font-style:italic; }
     float:left;
     margin:0;
     padding:2px 10px 2px 24px;
-	line-height:15px;
+    line-height:15px;
+    margin:0 !important; 
 }
 .availability-only a { background:url(../images/img/bullet.png) 100% 4px no-repeat; padding-right:11px; cursor:pointer; text-decoration:none; border-bottom:1px dotted #bbb; }
 .availability-only .expanded {}

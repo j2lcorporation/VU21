@@ -16,7 +16,9 @@ class OrganicInternet_SimpleConfigurableProducts_Catalog_Block_Product_View_Type
                 "price" => $this->_registerJsPrice($this->_convertPrice($product->getPrice())),
                 "finalPrice" => $this->_registerJsPrice($this->_convertPrice($product->getFinalPrice()))
             );
-
+            
+            $childProducts[$productId]["productQty"] = Mage::getModel('cataloginventory/stock_item')->loadByProduct($product)->getQty();;
+            
             if (Mage::getStoreConfig('SCP_options/product_page/change_name')) {
                 $childProducts[$productId]["productName"] = $product->getName();
             }
