@@ -53,21 +53,42 @@
 		
 	//List item height callculation
 	$gridMinHeight = intval($themeHelper->getCfg('category_grid/grid_item_min_height'));
+    
+        $_helper = $this->helper('catalog/output');
 ?>
     <?php $i=0; foreach ($_products->getItems() as $_product): ?>
         <?php if ($i++%$_columnCount==0): ?>
         <ul class="products-grid spec-grid spec-grid<?php echo $_columnCount;?>col grid-wide grid-actions-absolute<?php if($i==1) echo ' first';?>">
         <?php endif ?>
+            <?php 
+            $parentIds = Mage::getResourceSingleton('catalog/product_type_configurable') -> getParentIdsByChild($_product->getId()); 
+            $product = Mage::getModel('catalog/product')->load($parentIds[0]);  
+            ?>
             <li class="item<?php if(($i-1)%$_columnCount==0): ?> first<?php elseif($i%$_columnCount==0): ?> last<?php endif; ?>" <?php if($gridMinHeight) echo 'style="min-height:'.$gridMinHeight.'px;"'; ?>>
-                <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->htmlEscape($_product->getName()) ?>" class="product-image">
+                <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->htmlEscape($product->getName()) ?>" class="product-image">
                 
-                	<img src="<?php echo $themeHelper->getImgUrl($this, $_product, $imgWidth, $imgHeight, 'small_image'); ?>" width="<?php echo $imgWidth;?>" alt="<?php echo $this->htmlEscape($_product->getName()) ?>" />
+                	<img src="<?php echo $themeHelper->getImgUrl($this, $_product, $imgWidth, $imgHeight, 'small_image'); ?>" width="<?php echo $imgWidth;?>" alt="<?php echo $this->htmlEscape($product->getName()) ?>" />
                 
                 	<?php // Code displaying product labels "new" and "sale". It's a copy of 'catalog/product/view/media_labels.phtml'
 					require('view/media_labels.inc.phtml'); ?>
                 
                 </a>
-                <h2 class="product-name"><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->htmlEscape($_product->getName()) ?>"><?php echo $this->htmlEscape($_product->getName()) ?></a></h2>
+                <h2 class="product-name"><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->htmlEscape($product->getName()) ?>"><?php echo $this->htmlEscape($product->getName()) ?></a></h2>
+                <?php 
+                $att = $_product->getAttributes();
+                foreach ($att as $a) {
+                    if($a -> getIsVisibleOnFront()) {
+                        $v = $a -> getFrontend() -> getValue($_product);
+                        ?>
+
+                        <b><?php echo $a->getStoreLabel(); ?>: </b>
+
+                        <?php echo $v;?>
+
+                    <?php
+                    }
+                }
+                ?>
                 <?php echo $this->getReviewsSummaryHtml($_product, 'short') ?>
                 <?php echo $this->getPriceHtml($_product, true, '-new') ?>
                 <div class="actions">
@@ -85,6 +106,9 @@
                         <?php endif; ?>
                     </ul>
                 </div>
+                
+            
+
             </li>
         <?php if ($i%$_columnCount==0 || $i==count($_products)): ?>
         </ul>
