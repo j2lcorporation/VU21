@@ -90,7 +90,11 @@
                                 <div class="std"><?php echo $_helper->productAttribute($_product, nl2br($_product->getShortDescription()), 'short_description') ?></div>
                             </div>
                         <?php endif;?>
-                        
+                        <?php if ($_product->isSaleable() && $this->hasOptions()): ?>
+                                <?php if ($container2_html = $this->getChildChildHtml('container2', '', true, true)): ?>
+                                        <div class="container1-wrapper"><?php echo $container2_html; ?></div>
+                                <?php endif; ?>
+                        <?php endif; ?>
                         <?php if ($extrahint_html = $this->getChildHtml('extrahint')): //qty increments ?>
                         	<div class="extrahint-wrapper"><?php echo $extrahint_html; ?></div>
 						<?php endif; ?>
@@ -157,11 +161,7 @@
 			</div> <!-- end: product-top -->
 		</div> <!-- end: product-top-wrapper -->
 
-        <?php if ($_product->isSaleable() && $this->hasOptions()): ?>
-			<?php if ($container2_html = $this->getChildChildHtml('container2', '', true, true)): ?>
-        		<div class="container2-wrapper"><?php echo $container2_html; ?></div>
-        	<?php endif; ?>
-        <?php endif; ?>
+        
         
         <?php // Related products
 		$replaceRelated = $themeHelper->getCfg('products/replace_related');
