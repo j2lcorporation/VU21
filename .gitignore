@@ -1,5 +1,7 @@
+var/
 var/cache/
 var/session/
 var/report
 var/locks/*
+
 .DS_Store
