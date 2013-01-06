@@ -63,17 +63,25 @@
             <?php 
             $parentIds = Mage::getResourceSingleton('catalog/product_type_configurable') -> getParentIdsByChild($_product->getId()); 
             $product = Mage::getModel('catalog/product')->load($parentIds[0]);  
+            if ($product->getName() !== NULL)
+            {
+                $productName = $product->getName();
+            }
+            else
+            {
+                $productName = $_product->getName();
+            }
             ?>
             <li class="item<?php if(($i-1)%$_columnCount==0): ?> first<?php elseif($i%$_columnCount==0): ?> last<?php endif; ?>" <?php if($gridMinHeight) echo 'style="min-height:'.$gridMinHeight.'px;"'; ?>>
-                <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->htmlEscape($product->getName()) ?>" class="product-image">
+                <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->htmlEscape($productName) ?>" class="product-image">
                 
-                	<img src="<?php echo $themeHelper->getImgUrl($this, $_product, $imgWidth, $imgHeight, 'small_image'); ?>" width="<?php echo $imgWidth;?>" alt="<?php echo $this->htmlEscape($product->getName()) ?>" />
+                	<img src="<?php echo $themeHelper->getImgUrl($this, $_product, $imgWidth, $imgHeight, 'small_image'); ?>" width="<?php echo $imgWidth;?>" alt="<?php echo $this->htmlEscape($productName) ?>" />
                 
                 	<?php // Code displaying product labels "new" and "sale". It's a copy of 'catalog/product/view/media_labels.phtml'
 					require('view/media_labels.inc.phtml'); ?>
                 
                 </a>
-                <h2 class="product-name"><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->htmlEscape($product->getName()) ?>"><?php echo $this->htmlEscape($product->getName()) ?></a></h2>
+                <h2 class="product-name"><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->htmlEscape($productName) ?>"><?php echo $this->htmlEscape($productName) ?></a></h2>
                 <?php 
                 $att = $_product->getAttributes();
                 foreach ($att as $a) {
@@ -84,7 +92,7 @@
                         <b><?php echo $a->getStoreLabel(); ?>: </b>
 
                         <?php echo $v;?>
-
+                        <br/>
                     <?php
                     }
                 }
