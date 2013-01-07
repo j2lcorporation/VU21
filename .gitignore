@@ -5,3 +5,5 @@ var/report
 var/locks/*
 
 .DS_Store
+
+js/.DS_Store
