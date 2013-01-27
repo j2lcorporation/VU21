@@ -7,25 +7,25 @@
         </traduccionesj2l>
     </modules>   		
     <frontend>
-        <traduccionesj2l>
+        <translate>
             <modules>
-                <translations>
+                <traduccionesj2l>
                     <files>
                         <default>swn_translations.csv</default>
                     </files>
-                </translations>
+                </traduccionesj2l>
             </modules>
         </translate>
     </frontend>
     <adminhtml>
-        <traduccionesj2l>
+        <translate>
             <modules>
-                <translations>
+                <traduccionesj2l>
                     <files>
                         <default>swn_translations.csv</default>
                     </files>
-                </translations>
+                </traduccionesj2l>
             </modules>
-        </traduccionesj2l>
+        </translate>
     </adminhtml>
 </config>
