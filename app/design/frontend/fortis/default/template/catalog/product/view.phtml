@@ -149,7 +149,8 @@
                         <?php if ($tmp_html = $this->getChildHtml('i_block_product_main_bottom')): ?> <?php //Predefined CMS block ?>
                         	<div class="product-main-bottom-wrapper"><?php echo $tmp_html; ?></div>
                         <?php endif; ?>
-
+                        
+                        <?php echo $this->getLayout()->createBlock('core/template')->setTemplate('socialshare/socialbar.phtml')->toHtml();  ?>
                     </div> <!-- end: product-shop -->
 
                     <div class="product-img-box"<?php if($newImgWidth) echo " style=\"width:{$imgBoxWidth}px;\"";?>>
