@@ -1,0 +1,77 @@
+<body>
+
+    <table width="625"  border="0" cellspacing="0" cellpadding="0" style="border:1px #999 solid; background:url('{{skin_url}}images/email/fondo-CorreoPago_02.jpg') top no-repeat;">
+        <tr>
+            <td>
+                <div style="width:625px;  font-family:Arial, Helvetica, sans-serif; font-size:12px; padding-top:5px;">
+                
+                    
+                    <div style="width:130px; height:20px; text-align:right; padding-right:15px; color:#FFF; float:right; font-size:10px"> hora: <span style=" font-size:12px;">{{var createdAt_time}}</span></div>
+                    
+                    <div style="width:150px; height:20px; text-align:right; padding-right:15px; color:#FFF; float:right; font-size:10px">fecha: <span style=" font-size:12px;">{{var createdAt_date}}</span></div>
+                    
+                                        
+                  <div style="width:600px; height:15px; float: left; text-align:right; margin-left:14px;"></div>
+                    
+                    
+                    
+<div style="width:625px; height:70px; text-align:right; float:right; display:block;">
+                    
+                    
+                    
+                    
+                   
+                    
+                        <div style="width:220px; height:60px; text-align:left; float:left; margin-left:15px;"><img src="{{var skin_url}}images/email/logo-200.jpg" alt="{{var logo_alt}}" /></div>
+                        
+                        
+                        <div style="width:360px; height:60px; text-align: right; float: left; padding-left:15px;">
+                    
+                            <div style=" font-size:10px; margin-bottom:3px;">Hola <strong style="font-size:13px;">{{var user_name}} </strong>gracias realizar tu compra con nosotros<strong style="font-size:13px;"></strong></div>
+                            <div style=" font-size:10px; margin-bottom:3px; text-align:right">Monto Total:<strong style="font-size:18px; color:#666">{{var grand_total}}</strong></div>
+                            
+                       </div>
+                        
+                    
+                                        
+                    </div>
+                    
+                    <div style="width:600px; height:15px; float: left; text-align:right; margin-left:14px; border-top:1px #999 dashed;"></div>
+                    
+                    
+
+                    <div style="width:625px; height:58px; float: right; text-align:center; display:block;"><img src="{{skin_url}}images/email/procesando.png" /></div>
+                  <div style="width:625px; height:30px; color:#ec8911; float:left; font-size:22px; text-align:center; display:block">Estamos procesando su pago</div>
+                  <div style="width:625px; height:30px; color:#000000; float:left; text-align:center; display:block; margin-top:5px;">Una vez validado el pago, usted recibirá un correo de confirmacion.</div>
+                  
+                  <div style="width:600px; height:15px; float: left; text-align:right; margin-left:14px; border-bottom:1px #999 dashed;"></div>
+                  
+                  
+                  <div style="width:600px; height:15px; float: left; text-align:right; margin-left:14px;"></div>
+                    
+                  <div style="width:610px; height:21px; font-size:16px; float:left; display:block; padding-left:15px; padding-top:4PX; color:#FFFFFF; background:#1a7dc1;  ">SUMARIO:</div>
+                  
+                  {{layout handle="sales_email_order_items" order=$order}}
+                  
+                  <div style="width:600px; height:15px; float: left; text-align:right; margin-left:14px; border-bottom:1px #999 dashed;"></div>
+                  
+                  <div style="width:300px;  font-size:10px; float: right; display:block; padding-left:40px; text-align:right; margin-bottom:5px; margin-top:5px; margin-right:15px">IVA 12%: <strong style=" font-size:13px; font-weight:bold; color:#ec8911">{{var iva_total}}</strong> </div>
+                  <div style=" width:300px; font-size:10px; float:right; text-align:right; margin-right:15px;">Monto Total:<strong style="font-size:18px; color:#ec8911">{{var grand_total}}</strong></div>
+                  
+                  
+                  
+                                   
+                  
+                  <div style="width:625px; height:25px; font-size:10px; color:#000000; float:left; text-align:center; display:block; margin-top:30px; background:url('{{skin_url}}images/email/fondo-footer.jpg'); padding-top:10px;">
+                  Grupo Zapacos.com RIF: J-40093284-0</div></div>
+                
+                
+              </div>
+            
+            </td>
+        </tr>
+    </table>
+
+
+
+</body>
