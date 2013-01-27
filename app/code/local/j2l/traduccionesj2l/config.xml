@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config>
+    <modules>
+        <traduccionesj2l>
+        <<a title="traduccionesj2l" href="http://www.jimcode.org/tag/translations/">traduccionesj2l</a>>
+            <version>1.0.0</version>
+        </traduccionesj2l>
+    </modules>   		
+    <frontend>
+        <traduccionesj2l>
+            <modules>
+                <translations>
+                    <files>
+                        <default>swn_translations.csv</default>
+                    </files>
+                </translations>
+            </modules>
+        </translate>
+    </frontend>
+    <adminhtml>
+        <traduccionesj2l>
+            <modules>
+                <translations>
+                    <files>
+                        <default>swn_translations.csv</default>
+                    </files>
+                </translations>
+            </modules>
+        </traduccionesj2l>
+    </adminhtml>
+</config>
