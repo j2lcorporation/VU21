@@ -95,8 +95,7 @@
         	<div class="item-inner clearer">
             <?php // Product Image ?>
             <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image">
-            
-            	<img src="<?php echo $themeHelper->getImgUrl($this, $_product, $imgWidth, $imgHeight, 'small_image'); ?>" width="<?php echo $imgWidth;?>" alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" />
+                <span alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" style="display: block; width: <?php echo $imgWidth;?>; height: <?php echo $imgWidth;?>; background-image: url(<?php echo $themeHelper->getImgUrl($this, $_product, $imgWidth, $imgHeight, 'small_image'); ?>); background-repeat: no-repeat; background-position: center center;overflow: hidden;"></span>
                 
             	<?php // Code displaying product labels "new" and "sale". It's a copy of 'catalog/product/view/media_labels.phtml'
 				require('view/media_labels.inc.phtml'); ?>
@@ -151,8 +150,7 @@
         <?php endif ?>
             <li class="item<?php if(($i-1)%$_columnCount==0): ?> first<?php elseif($i%$_columnCount==0): ?> last<?php endif; ?>" <?php if($gridMinHeight) echo 'style="min-height:'.$gridMinHeight.'px;"'; ?>>
                 <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags ($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image">
-                
-                	<img src="<?php echo $themeHelper->getImgUrl($this, $_product, $imgWidth, $imgHeight, 'small_image'); ?>" width="<?php echo $imgWidth;?>" alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" />
+                    <span alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" style="display: block; width: <?php echo $imgWidth;?>; height: <?php echo $imgWidth;?>; background-image: url(<?php echo $themeHelper->getImgUrl($this, $_product, $imgWidth, $imgHeight, 'small_image'); ?>); background-repeat: no-repeat; background-position: center center;overflow: hidden;"></span>
                 
                 	<?php // Code displaying product labels "new" and "sale". It's a copy of 'catalog/product/view/media_labels.phtml'
 					require('view/media_labels.inc.phtml'); ?>
