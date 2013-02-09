@@ -240,7 +240,9 @@ Product.Config.prototype.updateProductName = function(productId) {
         "<span title='Solo " + productQty + " en inventario'>Solo <strong>" + productQty + "</strong> en inventario</span>" +
         "</p>" +
         "<div class='mclear'></div></div>";
-        jQuery('.short-description .std').append(message);
+        if (productQty < 21) {
+            jQuery('.short-description .std').append(message);
+        }
     }
 };
 
