@@ -57,6 +57,22 @@
         <?php foreach($this->getItems() as $_item): ?>
             <?php echo $this->getItemHtml($_item)?>
         <?php endforeach ?>
+            <tr class="first last odd">
+                <td>
+                    <h3 class="product-name"></h3>
+                </td>
+                <td class="a-right">
+                    <span class="cart-price">
+                        <span class="price"><strong>Total art&iacute;culos:</strong></span>            
+                    </span>
+                </td>
+                <td class="a-center"><?php echo Mage::getModel('checkout/cart')->getQuote()->getItemsQty(); ?></td>
+                <td class="a-right last">
+                    <span class="cart-price">
+                        <span class="price"></span>            
+                    </span>
+                </td>
+            </tr>
         </tbody>
     </table>
 </div>
