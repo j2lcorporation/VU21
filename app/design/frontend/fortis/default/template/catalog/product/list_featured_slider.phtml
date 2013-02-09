@@ -64,7 +64,7 @@
             
                 <li class="item<?php if(($i-1)%$_columnCount==0): ?> first<?php elseif($i%$_columnCount==0): ?> last<?php endif; ?>" <?php if($gridMinHeight) echo 'style="min-height:'.$gridMinHeight.'px;"'; ?>>
                     <a href="<?php echo $_product->getProductUrl() ?>" class="product-image">
-                        <span alt="<?php echo $this->htmlEscape($_product->getName()) ?>" style="display: block; width: <?php echo $imgWidth;?>; height: <?php echo $imgWidth;?>; background-image: url(<?php echo $themeHelper->getImgUrl($this, $_product, $imgWidth, $imgHeight, 'small_image'); ?>); background-repeat: no-repeat; background-position: center center;overflow: hidden;"></span>
+                        <span alt="<?php echo $this->htmlEscape($_product->getName()) ?>" style="display: block; width: <?php echo $imgWidth;?>px; height: <?php echo $imgWidth;?>px; background-image: url(<?php echo $themeHelper->getImgUrl($this, $_product, $imgWidth, $imgHeight, 'small_image'); ?>); background-repeat: no-repeat; background-position: center center;overflow: hidden;"></span>
                 
                     	<?php // Code displaying product labels "new" and "sale". It's a copy of 'catalog/product/view/media_labels.phtml'
 						require('view/media_labels.inc.phtml'); ?>
