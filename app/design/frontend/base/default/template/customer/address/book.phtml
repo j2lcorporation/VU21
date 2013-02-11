@@ -43,7 +43,13 @@
             <li class="item">
                 <h3><?php echo $this->__('Default Billing Address') ?></h3>
                 <address>
-                    <?php echo $this->getAddressHtml(Mage::getSingleton('customer/session')->getCustomer()->getAddressById($_pAddsses)) ?>
+                    <?php echo $this->getAddressHtml(Mage::getSingleton('customer/session')->getCustomer()->getAddressById($_pAddsses)) ?><br />
+                    <?php $address = $this->getCustomer()->getPrimaryBillingAddress(); 
+                    if( $address instanceof Varien_Object ) {?>
+                        <strong>Municipio: </strong> <?php echo $this->escapeHtml($address->getMunicipio()) ?><br />
+                        <strong>Parroquia: </strong> <?php echo $this->escapeHtml($address->getParroquia()) ?><br />
+                        <strong>Agencia Destino: </strong> <?php echo $this->escapeHtml($address->getAgencia()) ?><br />
+                    <?php } ?>
                 </address>
                 <p><a href="<?php echo $this->getAddressEditUrl(Mage::getSingleton('customer/session')->getCustomer()->getAddressById($_pAddsses)) ?>"><?php echo $this->__('Change Billing Address') ?></a></p>
            </li>
@@ -58,7 +64,13 @@
             <li class="item">
                 <h3><?php echo $this->__('Default Shipping Address') ?></h3>
                 <address>
-                    <?php echo $this->getAddressHtml(Mage::getSingleton('customer/session')->getCustomer()->getAddressById($_pAddsses)) ?>
+                    <?php echo $this->getAddressHtml(Mage::getSingleton('customer/session')->getCustomer()->getAddressById($_pAddsses)) ?><br />
+                    <?php $address = $this->getCustomer()->getPrimaryShippingAddress(); 
+                    if( $address instanceof Varien_Object ) {?>
+                        <strong>Municipio: </strong> <?php echo $this->escapeHtml($address->getMunicipio()) ?><br />
+                        <strong>Parroquia: </strong> <?php echo $this->escapeHtml($address->getParroquia()) ?><br />
+                        <strong>Agencia Destino: </strong> <?php echo $this->escapeHtml($address->getAgencia()) ?><br />
+                    <?php } ?>
                 </address>
                 <p><a href="<?php echo $this->getAddressEditUrl(Mage::getSingleton('customer/session')->getCustomer()->getAddressById($_pAddsses)) ?>"><?php echo $this->__('Change Shipping Address') ?></a></p>
             </li>
@@ -77,7 +89,10 @@
             <?php foreach($_pAddsses as $_address): ?>
             <li class="item">
                 <address>
-                    <?php echo $this->getAddressHtml($_address) ?>
+                    <?php echo $this->getAddressHtml($_address) ?><br />
+                    <strong>Municipio: </strong> <?php echo $this->escapeHtml($_address->getMunicipio()) ?><br />
+                    <strong>Parroquia: </strong> <?php echo $this->escapeHtml($_address->getParroquia()) ?><br />
+                    <strong>Agencia Destino: </strong> <?php echo $this->escapeHtml($_address->getAgencia()) ?><br />
                 </address>
                 <p><a href="<?php echo $this->getUrl('customer/address/edit', array('id'=>$_address->getId())) ?>"><?php echo $this->__('Edit Address') ?></a> <span class="separator">|</span> <a href="#" class="link-remove" onclick="return deleteAddress('<?php echo $_address->getId() ?>');"><?php echo $this->__('Delete Address') ?></a></p>
             </li>

@@ -119,6 +119,28 @@
             </li>
             <li class="fields">
                 <div class="field">
+                    <label for="municipio" class="required"><em>*</em><?php echo $this->__('Municipio') ?></label>
+                    <div class="input-box">
+                        <input type="text" name="municipio" class="input-text" id="municipio" value="<?php echo $this->escapeHtml($this->getAddress()->getMunicipio()) ?>"/>
+                    </div>
+                </div>
+                <div class="field">
+                    <label for="parroquia" class="required"><em>*</em><?php echo $this->__('Parroquia') ?></label>
+                    <div class="input-box">
+                        <input type="text" name="parroquia" class="input-text" id="parroquia" value="<?php echo $this->escapeHtml($this->getAddress()->getParroquia()) ?>"/>
+                    </div>
+                </div>
+            </li>
+            <li class="fields">
+                <div class="field">
+                    <label for="agencia"><?php echo $this->__('Agencia Destino') ?></label>
+                    <div class="input-box">
+                        <input type="text" name="agencia" class="input-text" id="agencia" value="<?php echo $this->escapeHtml($this->getAddress()->getAgencia()) ?>"/>
+                    </div>
+                </div>
+            </li>
+            <li class="fields">
+                <div class="field">
                     <label for="zip" class="required"><em>*</em><?php echo $this->__('Zip/Postal Code') ?></label>
                     <div class="input-box">
                         <input type="text" name="postcode" value="<?php echo $this->escapeHtml($this->getAddress()->getPostcode()) ?>" title="<?php echo $this->__('Zip/Postal Code') ?>" id="zip" class="input-text validate-zip-international <?php echo $this->helper('customer/address')->getAttributeValidationClass('postcode') ?>" />
