@@ -46,9 +46,9 @@
                     <?php echo $this->getAddressHtml(Mage::getSingleton('customer/session')->getCustomer()->getAddressById($_pAddsses)) ?><br />
                     <?php $address = $this->getCustomer()->getPrimaryBillingAddress(); 
                     if( $address instanceof Varien_Object ) {?>
-                        <strong>Municipio: </strong> <?php echo $this->escapeHtml($address->getMunicipio()) ?><br />
-                        <strong>Parroquia: </strong> <?php echo $this->escapeHtml($address->getParroquia()) ?><br />
-                        <strong>Agencia Destino: </strong> <?php echo $this->escapeHtml($address->getAgencia()) ?><br />
+                        <?php if (strlen($address->getMunicipio()) != 0){ ?><strong>Municipio: </strong> <?php echo $this->escapeHtml($address->getMunicipio()) ?><br /><?php } ?>
+                        <?php if (strlen($address->getParroquia()) != 0){ ?><strong>Parroquia: </strong> <?php echo $this->escapeHtml($address->getParroquia()) ?><br /><?php } ?>
+                        <?php if (strlen($address->getAgencia()) != 0){ ?><strong>Agencia Destino: </strong> <?php echo $this->escapeHtml($address->getAgencia()) ?><br /><?php } ?>
                     <?php } ?>
                 </address>
                 <p><a href="<?php echo $this->getAddressEditUrl(Mage::getSingleton('customer/session')->getCustomer()->getAddressById($_pAddsses)) ?>"><?php echo $this->__('Change Billing Address') ?></a></p>
@@ -67,9 +67,9 @@
                     <?php echo $this->getAddressHtml(Mage::getSingleton('customer/session')->getCustomer()->getAddressById($_pAddsses)) ?><br />
                     <?php $address = $this->getCustomer()->getPrimaryShippingAddress(); 
                     if( $address instanceof Varien_Object ) {?>
-                        <strong>Municipio: </strong> <?php echo $this->escapeHtml($address->getMunicipio()) ?><br />
-                        <strong>Parroquia: </strong> <?php echo $this->escapeHtml($address->getParroquia()) ?><br />
-                        <strong>Agencia Destino: </strong> <?php echo $this->escapeHtml($address->getAgencia()) ?><br />
+                        <?php if (strlen($address->getMunicipio()) != 0){ ?><strong>Municipio: </strong> <?php echo $this->escapeHtml($address->getMunicipio()) ?><br /><?php } ?>
+                        <?php if (strlen($address->getParroquia()) != 0){ ?><strong>Parroquia: </strong> <?php echo $this->escapeHtml($address->getParroquia()) ?><br /><?php } ?>
+                        <?php if (strlen($address->getAgencia()) != 0){ ?><strong>Agencia Destino: </strong> <?php echo $this->escapeHtml($address->getAgencia()) ?><br /><?php } ?>
                     <?php } ?>
                 </address>
                 <p><a href="<?php echo $this->getAddressEditUrl(Mage::getSingleton('customer/session')->getCustomer()->getAddressById($_pAddsses)) ?>"><?php echo $this->__('Change Shipping Address') ?></a></p>
