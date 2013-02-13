@@ -1,0 +1,24 @@
+<label for="<?php echo $this->getFieldId('region')?>"<?php if ($this->isRequired()):?> class="required"<?php endif ?>>
+    <?php if ($this->isRequired()):?><em>*</em><?php endif ?>
+    <?php echo $this->__('State/Province') ?>
+</label>
+<div class="input-box">
+    <select id="<?php echo $this->getFieldId('region_id')?>"
+        name="<?php echo $this->getFieldName('region_id')?>"
+        title="<?php echo $this->__('State/Province') ?>"
+        <?php if ($this->isRequired()):?>class="validate-select"<?php endif?>
+        style="display:none">
+        <option value=""><?php echo $this->__('Please select region, state or province') ?></option>
+    </select>
+    <script type="text/javascript">
+    //<![CDATA[
+        $('<?php echo $this->getFieldId('region_id')?>').setAttribute('defaultValue',  "<?php echo $this->getRegionId() ?>");
+    //]]>
+    </script>
+    <input type="text"
+        id="<?php echo $this->getFieldId('region')?>"
+        name="<?php echo $this->getFieldName('region')?>"
+        value="<?php echo $this->htmlEscape($this->getRegion()) ?>"
+        title="<?php echo $this->__('State/Province') ?>"
+        class="input-text<?php if ($this->isRequired()):?> required-entry<?php endif?>" />
+</div>
