@@ -1,0 +1,134 @@
+<?php if($this->getTitle()): ?>
+<div class="page-title">
+    <h1><?php echo $this->getTitle() ?></h1>
+</div>
+<?php endif; ?>
+<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+<form action="<?php echo $this->getSaveUrl() ?>" method="post" id="form-validate">
+    <div class="fieldset">
+    <?php echo $this->getBlockHtml('formkey')?>
+    <input type="hidden" name="success_url" value="<?php echo $this->getSuccessUrl() ?>" />
+    <input type="hidden" name="error_url" value="<?php echo $this->getErrorUrl() ?>" />
+        <h2 class="legend"><?php echo $this->__('Contact Information') ?></h2>
+        <ul class="form-list">
+            <li class="fields">
+                <?php echo $this->getLayout()->createBlock('customer/widget_name')->setObject($this->getAddress()->getFirstname() ? $this->getAddress() : $this->getCustomer())->toHtml() ?>
+            </li>
+    <?php $_company = $this->getLayout()->createBlock('Dull_Addressfields_Block_Widget_Company') ?>
+        <?php if($_company->isEnabled()): ?>
+            <li class="wide">
+                <?php echo $_company->setCompany($this->getAddress()->getCompany())->toHtml() ?>
+            </li>
+        <?php endif ?>
+    <?php $_telephone = $this->getLayout()->createBlock('Dull_Addressfields_Block_Widget_Telephone') ?>
+    <?php $_fax = $this->getLayout()->createBlock('Dull_Addressfields_Block_Widget_Fax') ?>
+        <?php if ($_telephone->isEnabled() || $_fax->isEnabled()): ?>
+            <li class="fields">
+            <?php if ($_telephone->isEnabled()): ?>
+                <div class="field">
+                    <?php echo $_telephone->setTelephone($this->getAddress()->getTelephone())->toHtml() ?>
+                </div>
+            <?php endif ?>
+            <?php if ($_fax->isEnabled()): ?>
+                <div class="field">
+                    <?php echo $_fax->setFax($this->getAddress()->getFax())->toHtml() ?>
+                </div>
+            <?php endif ?>
+            </li>
+        <?php endif ?>
+        </ul>
+    </div>
+    <div class="fieldset">
+        <h2 class="legend"><?php echo $this->__('Address') ?></h2>
+        <ul class="form-list">
+            <li class="wide">
+                <label for="street_1" class="required"><em>*</em><?php echo $this->__('Street Address') ?></label>
+                <div class="input-box">
+                    <input type="text" name="street[]" value="<?php echo $this->htmlEscape($this->getAddress()->getStreet(1)) ?>" title="<?php echo $this->__('Street Address') ?>" id="street_1" class="input-text required-entry" />
+                </div>
+            </li>
+        <?php for ($_i=2, $_n=$this->helper('customer/address')->getStreetLines(); $_i<=$_n; $_i++): ?>
+            <li class="wide">
+                <div class="input-box">
+                    <input type="text" name="street[]" value="<?php echo $this->htmlEscape($this->getAddress()->getStreet($_i)) ?>" title="<?php echo $this->__('Street Address '.$_i) ?>" id="street_<?php echo $_i?>" class="input-text" />
+                </div>
+            </li>
+        <?php endfor ?>
+            <li class="fields">
+                <div class="field">
+                    <?php if ($this->getAddressPosition('city') == 1): ?>
+                        <?php $_city = $this->getLayout()->createBlock('Dull_Addressfields_Block_Widget_City') ?>
+                        <?php echo $_city->setCity($this->getAddress()->getCity())->toHtml() ?>
+                    <?php else: ?>
+                        <?php $_postcode = $this->getLayout()->createBlock('Dull_Addressfields_Block_Widget_Postcode') ?>
+                        <?php echo $_postcode->setPostcode($this->getAddress()->getPostcode())->toHtml() ?>
+                    <?php endif ?>
+                </div>
+        <?php $_region = $this->getLayout()->createBlock('Dull_Addressfields_Block_Widget_Region') ?>
+            <?php if ($_region->isEnabled()): ?>
+                <div class="field">
+                    <?php echo $_region->setRegion($this->getAddress()->getRegion())->toHtml() ?>
+                </div>
+            <?php else: ?>
+                <div style="display:none;">
+                    <input id="region"/>
+                    <select id="region_id"></select>
+                </div>
+            <?php endif ?>
+            
+            <?php if ($_region->isEnabled()): ?>
+                </li>
+                <li class="fields">
+            <?php endif ?>
+                <div class="field">
+                    <?php if ($this->getAddressPosition('city') == 1): ?>
+                        <?php $_postcode = $this->getLayout()->createBlock('Dull_Addressfields_Block_Widget_Postcode') ?>
+                        <?php echo $_postcode->setPostcode($this->getAddress()->getPostcode())->toHtml() ?>
+                    <?php else: ?>
+                        <?php $_city = $this->getLayout()->createBlock('Dull_Addressfields_Block_Widget_City') ?>
+                        <?php echo $_city->setCity($this->getAddress()->getCity())->toHtml() ?>
+                    <?php endif ?>
+                </div>
+            <?php if (!$_region->isEnabled()): ?>
+                </li>
+                <li class="fields">
+            <?php endif ?>
+                <div class="field">
+                    <label for="country" class="required"><em>*</em><?php echo $this->__('Country') ?></label>
+                    <div class="input-box">
+                        <?php echo $this->getCountryHtmlSelect() ?>
+                    </div>
+                </div>
+            </li>
+            <li<?php if($this->canSetAsDefaultBilling()) echo ' class="control"' ?>>
+                <?php if($this->isDefaultBilling()): ?>
+                    <strong><?php echo $this->__('Default Billing Address') ?></strong>
+                <?php elseif($this->canSetAsDefaultBilling()): ?>
+                    <input type="checkbox" id="primary_billing" name="default_billing" value="1" title="<?php echo $this->__('Use as my default billing address') ?>" class="checkbox" /><label for="primary_billing"><?php echo $this->__('Use as my default billing address') ?></label>
+                <?php else: ?>
+                    <input type="hidden" name="default_billing" value="1" />
+                <?php endif; ?>
+            </li>
+            <li<?php if($this->canSetAsDefaultShipping()) echo ' class="control"' ?>>
+                <?php if($this->isDefaultShipping()): ?>
+                    <strong><?php echo $this->__('Default Shipping Address') ?></strong>
+                <?php elseif($this->canSetAsDefaultShipping()): ?>
+                    <input type="checkbox" id="primary_shipping" name="default_shipping" value="1" title="<?php echo $this->__('Use as my default shipping address') ?>" class="checkbox" /><label for="primary_shipping"><?php echo $this->__('Use as my default shipping address') ?></label>
+                <?php else: ?>
+                    <input type="hidden" name="default_shipping" value="1" />
+                <?php endif; ?>
+            </li>
+        </ul>
+    </div>
+    <div class="buttons-set">
+        <p class="required"><?php echo $this->__('* Required Fields') ?></p>
+        <p class="back-link"><a href="<?php echo $this->getBackUrl() ?>"><small>&laquo; </small><?php echo $this->__('Back') ?></a></p>
+        <button type="submit" title="<?php echo $this->__('Save Address') ?>" class="button"><span><span><?php echo $this->__('Save Address') ?></span></span></button>
+    </div>
+</form>
+<script type="text/javascript">
+//<![CDATA[
+    var dataForm = new VarienForm('form-validate', true);
+    new RegionUpdater('country', 'region', 'region_id', <?php echo $this->helper('directory')->getRegionJson() ?>, undefined, 'zip');
+//]]>
+</script>

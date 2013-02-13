@@ -1,0 +1,12 @@
+<label for="<?php echo $this->getFieldId('telephone')?>"<?php if ($this->isRequired()):?> class="required"<?php endif ?>>
+    <?php if ($this->isRequired()):?><em>*</em><?php endif ?>
+    <?php echo $this->__('Telephone') ?>
+</label>
+<div class="input-box">
+    <input type="text"
+        id="<?php echo $this->getFieldId('telephone')?>"
+        name="<?php echo $this->getFieldName('telephone')?>"
+        value="<?php echo $this->htmlEscape($this->getTelephone()) ?>"
+        title="<?php echo $this->__('Telephone') ?>"
+        class="input-text<?php if ($this->isRequired()):?> required-entry<?php endif?>" />
+</div>

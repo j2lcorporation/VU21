@@ -1,0 +1,170 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     default_iphone
+ * @copyright   Copyright (c) 2009 Irubin Consulting Inc. DBA Varien (http://www.varien.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php
+/**
+ * Edit customer address template
+ *
+ * @see Mage_Customer_Block_Address_Edit
+ */
+?>
+<div class="in-page">
+    <?php if($this->getTitle()): ?>
+    <div class="page-head">
+        <h3><?php echo $this->getTitle() ?></h3>
+    </div>
+    <?php endif; ?>
+    <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+    <form action="<?php echo $this->getSaveUrl() ?>" method="post" id="form-validate">
+        <?php echo $this->getBlockHtml('formkey')?>
+        <fieldset class="group-select">
+        <input type="hidden" name="success_url" value="<?php echo $this->getSuccessUrl() ?>" />
+        <input type="hidden" name="error_url" value="<?php echo $this->getErrorUrl() ?>" />
+            <h4 class="legend"><?php echo $this->__('Contact Information') ?></h4>
+            <ul class="form-list">
+                <li>
+                    <div class="col2-alt-set">
+                        <div class="col-1"><label for="firstname"><?php echo $this->__('First Name') ?> <span class="required">*</span></label></div>
+                        <div class="col-2"><input type="text" name="firstname" id="firstname" title="<?php echo $this->__('First Name') ?>" value="<?php echo ($this->getAddress()->getFirstname()) ? $this->htmlEscape($this->getAddress()->getFirstname()) : $this->htmlEscape($this->getCustomer()->getFirstname()) ?>" class="required-entry input-text" /></div>
+                    </div><div class="clear"></div>
+                </li>
+                <li>
+                    <div class="col2-alt-set">
+                        <div class="col-1"><label for="lastname"><?php echo $this->__('Last Name') ?> <span class="required">*</span></label></div>
+                        <div class="col-2"><input type="text" name="lastname" id="lastname" title="<?php echo $this->__('Last Name') ?>" value="<?php echo ($this->getAddress()->getLastname()) ? $this->htmlEscape($this->getAddress()->getLastname()) : $this->htmlEscape($this->getCustomer()->getLastname()) ?>" class="required-entry input-text" /></div>
+                    </div><div class="clear"></div>
+                </li>
+            <?php $_company = $this->getLayout()->createBlock('Dull_Addressfields_Block_Widget_Company') ?>
+            <?php if($_company->isEnabled()): ?>
+                <li>
+                    <?php echo $_company->setCompany($this->getAddress()->getCompany())->toHtml() ?>
+                </li>
+            <?php endif ?>
+            <?php $_telephone = $this->getLayout()->createBlock('Dull_Addressfields_Block_Widget_Telephone') ?>
+            <?php if ($_telephone->isEnabled()): ?>
+                <li>
+                    <?php echo $_telephone->setTelephone($this->getAddress()->getTelephone())->toHtml() ?>
+                </li>
+            <?php endif ?>
+            <?php $_fax = $this->getLayout()->createBlock('Dull_Addressfields_Block_Widget_Fax') ?>
+            <?php if ($_fax->isEnabled()): ?>
+                <li>
+                    <?php echo $_fax->setFax($this->getAddress()->getFax())->toHtml() ?>
+                </li>
+            <?php endif ?>
+            </ul>
+        </fieldset>
+        <fieldset class="group-select">
+            <h4 class="legend"><?php echo $this->__('Address') ?></h4>
+            <ul class="form-list">
+                <li>
+                    <div class="col2-alt-set">
+                        <div class="col-1"><label for="street_1"><?php echo $this->__('Street Address') ?> <span class="required">*</span></label></div>
+                        <div class="col-2"><input type="text" name="street[]" value="<?php echo $this->htmlEscape($this->getAddress()->getStreet(1)) ?>" title="<?php echo $this->__('Street Address') ?>" id="street_1" class="required-entry input-text" /></div>
+                    </div><div class="clear"></div>
+                </li>
+                <li>
+                    <div class="col2-alt-set">
+                        <div class="col-1"></div>
+                        <div class="col-2"><input type="text" name="street[]" value="<?php echo $this->htmlEscape($this->getAddress()->getStreet(2)) ?>" title="<?php echo $this->__('Street Address 2') ?>" id="street_2" class="input-text" /></div>
+                    </div><div class="clear"></div>
+                </li>
+                <li>
+                <?php if ($this->getAddressPosition('city') == 1): ?>
+                    <?php $_city = $this->getLayout()->createBlock('Dull_Addressfields_Block_Widget_City') ?>
+                    <?php echo $_city->setCity($this->getAddress()->getCity())->toHtml() ?>
+                <?php else: ?>
+                    <?php $_postcode = $this->getLayout()->createBlock('Dull_Addressfields_Block_Widget_Postcode') ?>
+                    <?php echo $_postcode->setPostcode($this->getAddress()->getPostcode())->toHtml() ?>
+                <?php endif ?>
+                </li>
+            <?php $_region = $this->getLayout()->createBlock('Dull_Addressfields_Block_Widget_Region') ?>
+            <?php if ($_region->isEnabled()): ?>
+                <li>
+                    <?php echo $_region->setRegion($this->getAddress()->getRegion())->toHtml() ?>
+                </li>
+            <?php else: ?>
+                <li style="display:none;">
+                    <div>
+                        <input id="region"/>
+                        <select id="region_id"/>
+                    </div>
+                </li>
+            <?php endif ?>
+                <li>
+                <?php if ($this->getAddressPosition('city') == 1): ?>
+                    <?php $_postcode = $this->getLayout()->createBlock('Dull_Addressfields_Block_Widget_Postcode') ?>
+                    <?php echo $_postcode->setPostcode($this->getAddress()->getPostcode())->toHtml() ?>
+                <?php else: ?>
+                    <?php $_city = $this->getLayout()->createBlock('Dull_Addressfields_Block_Widget_City') ?>
+                    <?php echo $_city->setCity($this->getAddress()->getCity())->toHtml() ?>
+                <?php endif ?>
+                </li>
+                <li>
+                    <div class="col2-alt-set">
+                        <div class="col-1"><label for="country"><?php echo $this->__('Country') ?> <span class="required">*</span></label></div>
+                        <div class="col-2 select190inner"><?php echo $this->getCountryHtmlSelect() ?></div>
+                    </div><div class="clear"></div>
+                </li>
+                <li>
+                    <?php if($this->isDefaultBilling()): ?>
+                        <strong><?php echo $this->__('Default Billing Address') ?></strong>
+                    <?php elseif($this->canSetAsDefaultBilling()): ?>
+                        <input type="checkbox" id="primary_billing" name="default_billing" value="1" />&nbsp;
+                        <label for="primary_billing"><?php echo $this->__('Use as my default billing address') ?></label>
+                    <?php else: ?>
+                        <input type="hidden" name="default_billing" value="1" />
+                    <?php endif; ?>
+                </li>
+                <li>
+                    <?php if($this->isDefaultShipping()): ?>
+                        <strong><?php echo $this->__('Default Shipping Address') ?></strong>
+                    <?php elseif($this->canSetAsDefaultShipping()): ?>
+                        <input type="checkbox" id="primary_shipping" name="default_shipping" value="1" />&nbsp;
+                        <label for="primary_shipping"><?php echo $this->__('Use as my default shipping address') ?></label>
+                    <?php else: ?>
+                        <input type="hidden" name="default_shipping" value="1" />
+                    <?php endif; ?>
+                </li>
+            </ul>
+        </fieldset>
+        <div class="col2-alt-set button-set">
+            <div class="col-1">
+                <p class="required"><?php echo $this->__('* Required Fields') ?></p>
+                <br /><br /><a href="<?php echo $this->getBackUrl() ?>" class="left">&laquo; <?php echo $this->__('Back') ?></a>
+            </div>
+            <div class="col-2">
+                <div class="form-buttons">
+                    <button class="form-button" type="submit"><span><?php echo $this->__('Save Address') ?></span></button>
+                </div>
+            </div>
+        </div><div class="clear"></div>
+    </form>
+</div><br /><br />
+<script type="text/javascript">
+    var dataForm = new VarienForm('form-validate', true);
+    new RegionUpdater('country', 'region', 'region_id', <?php echo $this->helper('directory')->getRegionJson() ?>, undefined, 'zip');
+</script>
