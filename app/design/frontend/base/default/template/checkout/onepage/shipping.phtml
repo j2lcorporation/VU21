@@ -120,6 +120,29 @@
                             </div>
                         </div>
                     </li>
+                    <li class="fields">
+                        <div class="field">
+                            <label for="shipping:municipio" class="required"><em>*</em><?php echo $this->__('Municipio') ?></label>
+                            <div class="input-box">
+                                <input type="text" name="shipping[municipio]" class="input-text" id="municipio" value="<?php echo $this->escapeHtml($this->getAddress()->getMunicipio()) ?>"/>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label for="shipping:parroquia" class="required"><em>*</em><?php echo $this->__('Parroquia') ?></label>
+                            <div class="input-box">
+                                <input type="text" name="shipping[parroquia]" class="input-text" id="parroquia" value="<?php echo $this->escapeHtml($this->getAddress()->getParroquia()) ?>"/>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="fields">
+                        <div class="field">
+                            <label for="shipping:agencia"><?php echo $this->__('Agencia Destino') ?></label>
+                            <div class="input-box">
+                                <input type="text" name="shipping[agencia]" class="input-text" id="agencia" value="<?php echo $this->escapeHtml($this->getAddress()->getAgencia()) ?>"/>
+                            </div>
+                        </div>
+                    </li>
+                    
                 <?php if ($this->isCustomerLoggedIn() && $this->customerHasAddresses()):?>
                     <li class="control">
                         <input type="checkbox" name="shipping[save_in_address_book]" value="1" title="<?php echo $this->__('Save in address book') ?>" id="shipping:save_in_address_book" onchange="shipping.setSameAsBilling(false);"<?php if ($this->getAddress()->getSaveInAddressBook()):?> checked="checked"<?php endif;?> class="checkbox" /><label for="shipping:save_in_address_book"><?php echo $this->__('Save in address book') ?></label></li>
