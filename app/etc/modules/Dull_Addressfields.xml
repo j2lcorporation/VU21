@@ -1,9 +1,0 @@
-<?xml version="1.0"?>
-<config>
-    <modules>
-        <Dull_Addressfields>
-            <active>true</active>
-            <codePool>community</codePool>
-        </Dull_Addressfields>
-    </modules>
-</config>
