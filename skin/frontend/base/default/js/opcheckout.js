@@ -78,7 +78,9 @@ Checkout.prototype = {
     _disableEnableAll: function(element, isDisabled) {
         var descendants = element.descendants();
         for (var k in descendants) {
-            descendants[k].disabled = isDisabled;
+            if (descendants[k].hasOwnProperty("disabled")) {
+                descendants[k].disabled = isDisabled;
+            }
         }
         element.disabled = isDisabled;
     },
