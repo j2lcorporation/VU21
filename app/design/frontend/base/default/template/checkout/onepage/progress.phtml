@@ -39,11 +39,7 @@
             </dt>
             <dd class="complete">
                 <address>
-                    <?php echo $this->getBilling()->format('html');
-                        $address = $this->getBilling(); ?><br/>
-                        <?php if (strlen($address->getMunicipio()) != 0){ ?><strong>Municipio: </strong> <?php echo $this->escapeHtml($address->getMunicipio()) ?><br /><?php } ?>
-                        <?php if (strlen($address->getParroquia()) != 0){ ?><strong>Parroquia: </strong> <?php echo $this->escapeHtml($address->getParroquia()) ?><br /><?php } ?>
-                        <?php if (strlen($address->getAgencia()) != 0){ ?><strong>Agencia Destino: </strong> <?php echo $this->escapeHtml($address->getAgencia()) ?><br /><?php } ?>
+                    <?php echo $this->getBilling()->format('html'); ?>
                 </address>
             </dd>
         <?php else: ?>
@@ -61,11 +57,7 @@
             </dt>
             <dd class="complete">
                 <address>
-                    <?php echo $this->getShipping()->format('html');
-                        $address = $this->getShipping(); ?><br/>
-                        <?php if (strlen($address->getMunicipio()) != 0){ ?><strong>Municipio: </strong> <?php echo $this->escapeHtml($address->getMunicipio()) ?><br /><?php } ?>
-                        <?php if (strlen($address->getParroquia()) != 0){ ?><strong>Parroquia: </strong> <?php echo $this->escapeHtml($address->getParroquia()) ?><br /><?php } ?>
-                        <?php if (strlen($address->getAgencia()) != 0){ ?><strong>Agencia Destino: </strong> <?php echo $this->escapeHtml($address->getAgencia()) ?><br /><?php } ?>
+                    <?php echo $this->getShipping()->format('html'); ?>
                 </address>
             </dd>
         <?php else: ?>
