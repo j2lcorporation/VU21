@@ -89,10 +89,14 @@
             <?php foreach($_pAddsses as $_address): ?>
             <li class="item">
                 <address>
-                    <?php echo $this->getAddressHtml($_address) ?><br />
-                    <strong>Municipio: </strong> <?php echo $this->escapeHtml($_address->getMunicipio()) ?><br />
-                    <strong>Parroquia: </strong> <?php echo $this->escapeHtml($_address->getParroquia()) ?><br />
-                    <strong>Agencia Destino: </strong> <?php echo $this->escapeHtml($_address->getAgencia()) ?><br />
+                    <?php echo $this->getAddressHtml($_address); ?>
+                    <br />
+                    <?php
+                    if( $_address instanceof Varien_Object ) {?>
+                        <?php if (strlen($_address->getMunicipio()) != 0){ ?><strong>Municipio: </strong> <?php echo $this->escapeHtml($_address->getMunicipio()) ?><br /><?php } ?>
+                        <?php if (strlen($_address->getParroquia()) != 0){ ?><strong>Parroquia: </strong> <?php echo $this->escapeHtml($_address->getParroquia()) ?><br /><?php } ?>
+                        <?php if (strlen($_address->getAgencia()) != 0){ ?><strong>Agencia Destino: </strong> <?php echo $this->escapeHtml($_address->getAgencia()) ?><br /><?php } ?>
+                    <?php } ?>
                 </address>
                 <p><a href="<?php echo $this->getUrl('customer/address/edit', array('id'=>$_address->getId())) ?>"><?php echo $this->__('Edit Address') ?></a> <span class="separator">|</span> <a href="#" class="link-remove" onclick="return deleteAddress('<?php echo $_address->getId() ?>');"><?php echo $this->__('Delete Address') ?></a></p>
             </li>
