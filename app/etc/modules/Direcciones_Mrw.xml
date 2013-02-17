@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Direcciones_Mrw>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Direcciones_Mrw>
+    </modules>
+</config>
