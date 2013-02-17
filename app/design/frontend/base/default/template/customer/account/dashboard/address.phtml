@@ -34,26 +34,14 @@
             <div class="col-1">
                 <h4><?php echo $this->__('Default Billing Address') ?></h4>
                 <address>
-                    <?php echo $this->getPrimaryBillingAddressHtml() ?><br />
-                    <?php $address = $this->getCustomer()->getPrimaryBillingAddress(); 
-                    if( $address instanceof Varien_Object ) {?>
-                        <?php if (strlen($address->getMunicipio()) != 0){ ?><strong>Municipio: </strong> <?php echo $this->escapeHtml($address->getMunicipio()) ?><br /><?php } ?>
-                        <?php if (strlen($address->getParroquia()) != 0){ ?><strong>Parroquia: </strong> <?php echo $this->escapeHtml($address->getParroquia()) ?><br /><?php } ?>
-                        <?php if (strlen($address->getAgencia()) != 0){ ?><strong>Agencia Destino: </strong> <?php echo $this->escapeHtml($address->getAgencia()) ?><br /><?php } ?>
-                    <?php } ?>
+                    <?php echo $this->getPrimaryBillingAddressHtml() ?>
                     <a href="<?php echo $this->getPrimaryBillingAddressEditUrl() ?>"><?php echo $this->__('Edit Address') ?></a>
                 </address>
             </div>
             <div class="col-2">
                 <h4><?php echo $this->__('Default Shipping Address') ?></h4>
                 <address>
-                    <?php echo $this->getPrimaryShippingAddressHtml() ?><br />
-                    <?php $address = $this->getCustomer()->getPrimaryShippingAddress(); 
-                    if( $address instanceof Varien_Object ) {?>
-                        <?php if (strlen($address->getMunicipio()) != 0){ ?><strong>Municipio: </strong> <?php echo $this->escapeHtml($address->getMunicipio()) ?><br /><?php } ?>
-                        <?php if (strlen($address->getParroquia()) != 0){ ?><strong>Parroquia: </strong> <?php echo $this->escapeHtml($address->getParroquia()) ?><br /><?php } ?>
-                        <?php if (strlen($address->getAgencia()) != 0){ ?><strong>Agencia Destino: </strong> <?php echo $this->escapeHtml($address->getAgencia()) ?><br /><?php } ?>
-                    <?php } ?>
+                    <?php echo $this->getPrimaryShippingAddressHtml() ?>
                     <a href="<?php echo $this->getPrimaryShippingAddressEditUrl() ?>"><?php echo $this->__('Edit Address') ?></a>
                 </address>
             </div>

@@ -130,28 +130,6 @@
                         </div>
                     </div>
                 </li>
-                <li class="fields">
-                    <div class="field">
-                        <label for="billing:municipio" class="required"><em>*</em><?php echo $this->__('Municipio') ?></label>
-                        <div class="input-box">
-                            <input type="text" name="billing[municipio]" class="input-text required-entry " id="billing:municipio" value="<?php echo $this->escapeHtml($this->getAddress()->getMunicipio()) ?>"/>
-                        </div>
-                    </div>
-                    <div class="field">
-                        <label for="billing:parroquia" class="required"><em>*</em><?php echo $this->__('Parroquia') ?></label>
-                        <div class="input-box">
-                            <input type="text" name="billing[parroquia]" class="input-text required-entry " id="billing:parroquia" value="<?php echo $this->escapeHtml($this->getAddress()->getParroquia()) ?>"/>
-                        </div>
-                    </div>
-                </li>
-                <li class="fields">
-                    <div class="field">
-                        <label for="billing:agencia"><?php echo $this->__('Agencia Destino') ?></label>
-                        <div class="input-box">
-                            <input type="text" name="billing[agencia]" class="input-text" id="billing:agencia" value="<?php echo $this->escapeHtml($this->getAddress()->getAgencia()) ?>"/>
-                        </div>
-                    </div>
-                </li>
                 <?php if(!$this->isCustomerLoggedIn()): ?>
 
         <?php $_dob = $this->getLayout()->createBlock('customer/widget_dob') ?>
