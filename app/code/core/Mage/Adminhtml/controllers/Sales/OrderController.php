@@ -456,6 +456,31 @@ class Mage_Adminhtml_Sales_OrderController extends Mage_Adminhtml_Controller_Act
         $orderIds = $this->getRequest()->getPost('order_ids');
         $document = $this->getRequest()->getPost('document');
     }
+    
+    public function pdfordersAction(){
+        $orderIds = $this->getRequest()->getPost('order_ids');
+        $flag = false;
+        if (!empty($orderIds)) {
+            $invoices = Mage::getResourceModel('sales/order_collection')
+                ->addFieldToFilter('entity_id', array('in' => $orderIds))
+            ;
+            $flag = true;
+            if (!isset($pdf)){
+                $pdf = Mage::getModel('sales/order_pdf_order')->getPdf($invoices);
+            } else {
+                $pages = Mage::getModel('sales/order_pdf_order')->getPdf($invoices);
+                $pdf->pages = array_merge ($pdf->pages, $pages->pages);
+            }
+            if ($flag) {
+                return $this->_prepareDownloadResponse('order'.Mage::getSingleton('core/date')->date('Y-m-d_H-i-s').'.pdf', $pdf->render(), 'application/pdf');
+            } else {
+                $this->_getSession()->addError($this->__('There are no printable documents related to selected orders'));
+                $this->_redirect('*/*/');
+            }
+
+        }
+        $this->_redirect('*/*/');
+    }
 
     /**
      * Print invoices for selected orders

@@ -1425,6 +1425,9 @@
                 <default>sales/order_pdf_items_invoice_default</default>
                 <grouped>sales/order_pdf_items_invoice_grouped</grouped>
             </invoice>
+            <order>
+                <default>sales/order_pdf_items_order_default</default>
+            </order>
             <shipment>
                 <default>sales/order_pdf_items_shipment_default</default>
             </shipment>
