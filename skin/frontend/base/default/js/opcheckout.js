@@ -613,10 +613,8 @@ ShippingMethod.prototype = {
             
             //Implementacion para eliminar el pago en tienda si escoge envio por MRW
             if(document.getElementById('s_method_flatrate_flatrate').checked) {
-                console.log(document.getElementById('checkout-payment-method-load').getElementsByTagName("dt")[0]);
                 document.getElementById('checkout-payment-method-load').getElementsByTagName("dt")[0].style.display = 'none';
             }else {
-                console.log("entro else");
                 document.getElementById('checkout-payment-method-load').getElementsByTagName("dt")[0].style.display = 'initial'; 
             }
 
