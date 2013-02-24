@@ -196,10 +196,74 @@
                 <active>0</active>
                 <model>payment/method_banktransfer</model>
                 <order_status>pending</order_status>
-                <title>Bank Transfer Payment</title>
+                <title>Banco BFC</title>
                 <allowspecific>0</allowspecific>
                 <group>offline</group>
             </banktransfer>
+            <banktransfer2>
+                <active>0</active>
+                <model>payment/method_banktransfer2</model>
+                <order_status>pending</order_status>
+                <title>Banco BOD</title>
+                <allowspecific>0</allowspecific>
+                <group>offline</group>
+            </banktransfer2>
+            <banktransfer3>
+                <active>0</active>
+                <model>payment/method_banktransfer3</model>
+                <order_status>pending</order_status>
+                <title>Banco Provincial</title>
+                <allowspecific>0</allowspecific>
+                <group>offline</group>
+            </banktransfer3>
+            <banktransfer4>
+                <active>0</active>
+                <model>payment/method_banktransfer4</model>
+                <order_status>pending</order_status>
+                <title>Bank Transfer Payment</title>
+                <allowspecific>0</allowspecific>
+                <group>offline</group>
+            </banktransfer4>
+            <banktransfer5>
+                <active>0</active>
+                <model>payment/method_banktransfer5</model>
+                <order_status>pending</order_status>
+                <title>Bank Transfer Payment</title>
+                <allowspecific>0</allowspecific>
+                <group>offline</group>
+            </banktransfer5>
+            <banktransfer6>
+                <active>0</active>
+                <model>payment/method_banktransfer6</model>
+                <order_status>pending</order_status>
+                <title>Banco Banco de Venezuela</title>
+                <allowspecific>0</allowspecific>
+                <group>offline</group>
+            </banktransfer6>
+            <banktransfer7>
+                <active>0</active>
+                <model>payment/method_banktransfer7</model>
+                <order_status>pending</order_status>
+                <title>Banco Bancaribe</title>
+                <allowspecific>0</allowspecific>
+                <group>offline</group>
+            </banktransfer7>
+            <banktransfer8>
+                <active>0</active>
+                <model>payment/method_banktransfer8</model>
+                <order_status>pending</order_status>
+                <title>Banco Mercantil</title>
+                <allowspecific>0</allowspecific>
+                <group>offline</group>
+            </banktransfer8>
+            <banktransfer9>
+                <active>0</active>
+                <model>payment/method_banktransfer9</model>
+                <order_status>pending</order_status>
+                <title>Banco Banesco</title>
+                <allowspecific>0</allowspecific>
+                <group>offline</group>
+            </banktransfer9>
             <cashondelivery>
                 <active>0</active>
                 <model>payment/method_cashondelivery</model>
