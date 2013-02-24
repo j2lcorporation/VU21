@@ -82,17 +82,18 @@
                 </a>
                 <h2 class="product-name"><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->htmlEscape($productName) ?>"><?php echo $this->htmlEscape($productName) ?></a></h2>
                 <?php 
-                $att = $_product->getAttributes();
+                $att = $_product->getMarca();
                 foreach ($att as $a) {
                     if($a -> getIsVisibleOnFront()) {
                         $v = $a -> getFrontend() -> getValue($_product);
+                        if ($a->getStoreLabel() === "Marca")
+                        {
                         ?>
-
-                        <b><?php echo $a->getStoreLabel(); ?>: </b>
-
-                        <?php echo $v;?>
+                            <b><?php echo $a->getStoreLabel(); ?>: </b>
+                            <?php echo $v;?>
                         <br/>
-                    <?php
+                        <?php
+                        }
                     }
                 }
                 ?>

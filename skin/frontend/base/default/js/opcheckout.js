@@ -564,8 +564,7 @@ ShippingMethod.prototype = {
         return false;
     },
 
-    save: function(){
-
+    save: function(){        
         if (checkout.loadWaiting!=false) return;
         if (this.validate()) {
             checkout.setLoadWaiting('shipping-method');
@@ -610,6 +609,15 @@ ShippingMethod.prototype = {
         if (response.goto_section) {
             checkout.gotoSection(response.goto_section);
             checkout.reloadProgressBlock();
+            
+            
+            //Implementacion para eliminar el pago en tienda si escoge envio por MRW
+            if(document.getElementById('s_method_flatrate_flatrate').checked) {
+                document.getElementById('checkout-payment-method-load').getElementsByTagName("dt")[0].style.display = 'none';
+            }else {
+                document.getElementById('checkout-payment-method-load').getElementsByTagName("dt")[0].style.display = 'initial'; 
+            }
+
             return;
         }
 
