@@ -40,11 +40,11 @@
             </db>
             <default_setup>
                 <connection>
-                    <!--<host><![CDATA[23.23.251.29:3306]]></host>-->
-                    <host><![CDATA[127.0.0.1:3306]]></host>
-                    <username><![CDATA[bn_magento]]></username>
-                    <password><![CDATA[314c65a724]]></password>
-                    <dbname><![CDATA[bitnami_magento]]></dbname>
+                    <!--<host><![CDATA[10.0.0.157:3306]]></host>-->
+                    <host><![CDATA[vu21db.db.10627929.hostedresource.com:3306]]></host>
+                    <username><![CDATA[vu21db]]></username>
+                    <password><![CDATA[Kabirvu21#]]></password>
+                    <dbname><![CDATA[vu21db]]></dbname>
                     <initStatements><![CDATA[SET NAMES utf8]]></initStatements>
                     <model><![CDATA[mysql4]]></model>
                     <type><![CDATA[pdo_mysql]]></type>
