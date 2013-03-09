@@ -96,6 +96,40 @@ class Mage_Sales_Model_Order_Pdf_Order extends Mage_Sales_Model_Order_Pdf_Abstra
         $this->y -= 20;
     }
     
+    protected function drawTotalItems(Zend_Pdf_Page $page, $total)
+    {
+        /* Add table head */
+        $this->_setFontRegular($page, 10);
+        $page->setFillColor(new Zend_Pdf_Color_RGB(0.93, 0.92, 0.92));
+        $page->setLineColor(new Zend_Pdf_Color_GrayScale(0.5));
+        $page->setLineWidth(0.5);
+        $page->drawRectangle(25, $this->y, 570, $this->y -15);
+        $this->y -= 10;
+        $page->setFillColor(new Zend_Pdf_Color_RGB(0, 0, 0));
+
+        //columns headers
+        $lines[0][] = array(
+            'text'  => "Cantidad de productos:",
+            'feed'  => 420,
+            'align' => 'right'
+        );
+
+        $lines[0][] = array(
+            'text'  => $total,
+            'feed'  => 435,
+            'align' => 'right'
+        );
+        
+        $lineBlock = array(
+            'lines'  => $lines,
+            'height' => 2
+        );
+
+        $this->drawLineBlocks($page, array($lineBlock), array('table_header' => true));
+        $page->setFillColor(new Zend_Pdf_Color_GrayScale(0));
+        $this->y -= 20;
+    }
+    
     /**
      * Insert totals to pdf page
      *
@@ -180,14 +214,19 @@ class Mage_Sales_Model_Order_Pdf_Order extends Mage_Sales_Model_Order_Pdf_Abstra
             /* Add table */
             $this->_drawHeader($page);
             /* Add body */
+            $cont = 0;
             foreach ($order->getAllItems() as $item){
                 if ($item->getParentItem()) {
                     continue;
                 }
                 /* Draw item */
                 $this->_drawItem($item, $page, $order);
+                $cont = $item -> _data[qty_ordered] + $cont;
                 $page = end($pdf->pages);
             }
+            
+            $this->drawTotalItems($page, $cont);
+            
             /* Add totals */
             $this->insertTotals($page, $order);
             if ($order->getStoreId()) {
